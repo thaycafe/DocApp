@@ -1,0 +1,3 @@
+title=DocApp
+author=Thaynara
+orientation=portrait

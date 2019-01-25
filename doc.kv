@@ -1,0 +1,150 @@
+#:include propriedades.kv
+#:import C kivy.utils.get_color_from_hex
+#:import NoTransition kivy.uix.screenmanager.NoTransition
+
+<TransicaoTela>:
+  Inicial:
+  WidgetsKivy:
+  SintaxePy:
+  SintaxeKv:
+
+<Inicial>:
+  name:'inicial'
+  FloatLayout:
+    Action:
+      ActionView:
+        ActionPrevious:
+          title: 'Projeto Documentação Kivy'
+          with_previous: False
+    Image:
+      source:'kivylogo.png'
+      #size_hint: .5, .5
+      pos_hint:{'center_x':.5, 'center_y':.7}
+      size_hint:6., .6
+
+    Label:
+      text:'DocApp'
+      pos_hint:{'center_x':.5, 'center_y':.4}
+      font_size:sp(40)
+      color:C('#000000')
+
+    Label:
+      text:'Um guia básico para a utilização dos recursos\ndo kivy e suas propriedades'
+      pos_hint:{'center_x':.5, 'center_y':.3}
+      font_size:sp(24)
+      color:C('#000000')
+      halign:"center"
+
+    Button:
+      text:"Iniciar"
+      size_hint:.4, .09
+      bold:True
+      pos_hint:{'center_x':.5, 'center_y':.15}
+      font_size:sp(24)
+      on_press:app.root.current='widgetskivy'
+
+<WidgetsKivy>:
+  name:'widgetskivy'
+  FloatLayout:
+    Action:
+      ActionView:
+        ActionPrevious:
+          title: 'Projeto Documentação Kivy'
+          on_press: app.root.current='inicial'
+    Label:
+      text:'Selecione o recurso que deseja explorar'
+      pos_hint:{'center_x':.5, 'center_y':.85}
+      color:C('#000000')
+      font_size:dp(24)
+    ScrollView:
+      size_hint: .9, .7
+      pos_hint:{'center_x':.5, 'center_y':.45}
+      GridLayout:
+        cols:2
+        size_hint_y:None
+        row_default_height: dp(100)
+        row_force_default: True
+        height: self.minimum_height
+        spacing: 10
+        ButtonWid:
+          text:'Sintaxe .py'
+          on_press: app.root.current='sintaxepy'
+        ButtonWid:
+          text:'Sintaxe .kv'
+          on_press: app.root.current='sintaxekv'
+        ButtonWid:
+          text:'Label'
+        ButtonWid:
+          text:'Button'
+        ButtonWid:
+          text:'TextInput'
+        ButtonWid:
+          text:'FloatLayout'
+        ButtonWid:
+          text:'BoxLayout'
+        ButtonWid:
+          text:'GridLayout'
+        ButtonWid:
+          text:'ScrollView'
+        ButtonWid:
+          text:'Cores'
+        ButtonWid:
+          text:'Buildkv'
+        ButtonWid:
+          text:'Exemplos app'
+
+<SintaxePy>:
+  name:'sintaxepy'
+  FloatLayout:
+    Action:
+      ActionView:
+        ActionPrevious:
+          title: 'Projeto Documentação Kivy'
+          on_press: app.root.current='widgetskivy'
+    Label:
+      text:'Sintaxe Básica do arquivo Python'
+      color:C('#000000')
+      pos_hint:{'center_x':.5, 'center_y':.85}
+      font_size:sp(24)
+    ScrollView:
+      size_hint: .9, .7
+      pos_hint:{'center_x':.5, 'center_y':.45}
+      GridLayout:
+        cols:1
+        size_hint_y:None
+        row_default_height: dp(400)
+        height: self.minimum_height
+        spacing: 10
+        TextInput:
+          size_hint:1, .3
+          readonly:True
+          text:'#importações\nfrom kivy.app import App\nfrom kivy.core.window import Window\nfrom kivy.uix.floatlayout import FloatLayout\nfrom kivy.uix.button import Button\n\n#Classes que serão usadas\nclass RootWidget(FloatLayout):\n pass\n\n#classse principal, recebe o App\nclass MedidaApp(App):\n def build(self):\n  return RootWidget()\n\n#Propriedades da janela\nWindow.clearcolor = [1, 1, 1, 1] #comando para mudar a cor\n\n#comando para executar App\nMedidaApp().run()'
+          color: C('#000000')
+
+<SintaxeKv>:
+  name:'sintaxekv'
+  FloatLayout:
+    Action:
+      ActionView:
+        ActionPrevious:
+          title:'Projeto Documentação Kivy'
+          on_press: app.root.current='widgetskivy'
+    Label:
+      text:'Sintaxe Básica do arquivo Kivy'
+      color:C('#000000')
+      pos_hint:{'center_x':.5, 'center_y':.85}
+      font_size:sp(24)
+    ScrollView:
+      size_hint: .9, .7
+      pos_hint:{'center_x':.5, 'center_y':.45}
+      GridLayout:
+        cols:1
+        size_hint_y:None
+        row_default_height: dp(400)
+        height: self.minimum_height
+        spacing: 10
+        TextInput:
+          size_hint:1, .3
+          readonly:True
+          text:''
+          color: C('#000000')
