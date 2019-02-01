@@ -1,11 +1,21 @@
 #:set text_py '#importações\nfrom kivy.app import App\nfrom kivy.core.window import Window\nfrom kivy.uix.floatlayout import FloatLayout\nfrom kivy.uix.button import Button\n\n#Classes que serão usadas\nclass RootWidget(FloatLayout):\n pass\n\n#classse principal, recebe o App\nclass MedidaApp(App):\n def build(self):\n  return RootWidget()\n\n#Propriedades da janela\nWindow.clearcolor = [1, 1, 1, 1] #comando para mudar a cor\n\n#comando para executar App\nMedidaApp().run()'
-#:set text_kv '#:include propriedades.kv   #incluir classes e propriedades de outro arquivo .kv\n#:import C kivy.utils.get_color_from_hex\n#:set dog "Luna"  #declaração de constante\n\n<Class1>:\n    Button:\n       size_hint: None, None\n       size: 350, 50\n       x: 100\n       y: 350\n       text: "px"\n    Button:\n       size_hint: .5, .09\n       pos_hint: {"x":.1, "y":.1}\n       text:"% "\n\n<Class2>:    Label:\n       text:"Hello World"\n       font_size:"20sp"'
+#:set text_kv '#:include propriedades.kv   #incluir classes e propriedades de outro arquivo .kv\n#:import C kivy.utils.get_color_from_hex\n#:set dog "Luna"  #declaração de constante\n\n<Class1>:\n    Button:\n       size_hint: None, None\n       size: 350, 50\n       x: 100\n       y: 350\n       text: "px"\n       background_normal:''\n       background_color: C("#d66f05")\n    Button:\n       size_hint: .5, .09\n       pos_hint: {"x":.1, "y":.1}\n       text:"% "\n\n<Class2>:\n    Label:\n       text:"Hello World"\n       font_size:"20sp"'
+#:set text_lb1 "Label:\n       text:'Label 1'\n       color:C('#FD2A4A')"
+#:set text_lb2 "       bold:True\n       font_size:dp(20)\n       underline: True"
+#:set text_lb3 "       text: 'Clique [b][ref=aqui]aqui[/ref][/b] para testar!'\n       markup: True\n       on_ref_press:app.root.current_screen.clique()"
+
 <ButtonWid@Button>:
   bold:True
   background_normal:''
   background_color: C("#d66f05")
+  font_size:dp(20)
 
 <Action@ActionBar>:
   pos_hint:{'top':1}
   background_normal:""
   background_color:C("#ff00c1")
+
+<CampoCod@TextInput>:
+  size_hint:1, .3
+  readonly:True
+  color: C('#000000')
